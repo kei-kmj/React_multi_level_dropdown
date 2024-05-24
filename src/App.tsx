@@ -1,4 +1,5 @@
 import {NormalData} from "./NormalData.tsx";
+import {ActualMultiLevelDropdown} from "./ActualDropdown.tsx";
 
 
 export const App = () => {
@@ -6,6 +7,7 @@ export const App = () => {
         <div>
             <h1>App</h1>
             <NormalData/>
+            <ActualMultiLevelDropdown/>
         </div>
     )
 }

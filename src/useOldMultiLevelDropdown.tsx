@@ -5,7 +5,7 @@ type OptionMap = {
     [key: string]: string[]
 }
 
-export const useMultiLevelDropdown = (initialOptions: { first: string[], second: OptionMap, third: OptionMap }) => {
+export const useOldMultiLevelDropdown = (initialOptions: { first: string[], second: OptionMap, third: OptionMap }) => {
     const [firstSelection, setFirstSelection] = useState<string>('')
     const [secondSelection, setSecondSelection] = useState<string>('')
     const [thirdSelection, setThirdSelection] = useState<string>('')

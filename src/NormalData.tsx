@@ -1,7 +1,7 @@
 import './App.css'
 import {Box} from "@mui/material";
-import {Dropdown} from "./Dropdown.tsx";
-import {useMultiLevelDropdown} from "./useMultiLevelDropdown.tsx";
+import {OldDropdown} from "./OldDropdown.tsx";
+import {useOldMultiLevelDropdown} from "./useOldMultiLevelDropdown.tsx";
 
 
 export const NormalData = () => {
@@ -21,21 +21,21 @@ export const NormalData = () => {
         handleFirstSelection,
         handleSecondSelection,
         handleThirdSelection
-    } = useMultiLevelDropdown(initialOptions)
+    } = useOldMultiLevelDropdown(initialOptions)
 
     return (
         <Box display="flex" justifyContent="space-between" gap={5}>
-            <Dropdown labelID="first-select-label"
-                      label="食材" value={firstSelection} options={firstOptions} onChange={handleFirstSelection}
+            <OldDropdown labelID="first-select-label"
+                         label="食材" value={firstSelection} options={firstOptions} onChange={handleFirstSelection}
             />
-            <Dropdown labelID="second-select-label"
-                      label="材料" value={secondSelection} options={secondOptions}
-                      onChange={handleSecondSelection}
+            <OldDropdown labelID="second-select-label"
+                         label="材料" value={secondSelection} options={secondOptions}
+                         onChange={handleSecondSelection}
 
             />
-            <Dropdown labelID="third-select-label"
-                      label="詳細" value={thirdSelection}
-                      options={thirdOptions} onChange={handleThirdSelection}
+            <OldDropdown labelID="third-select-label"
+                         label="詳細" value={thirdSelection}
+                         options={thirdOptions} onChange={handleThirdSelection}
             />
         </Box>
     )

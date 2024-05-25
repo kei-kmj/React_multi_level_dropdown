@@ -1,5 +1,6 @@
-import {useState} from 'react';
-import {MenuItem, FormControl, InputLabel, Select, Box, SelectChangeEvent} from '@mui/material';
+import {Box} from '@mui/material';
+import {Dropdown} from "./Dropdown.tsx";
+import {useMultiLevelSelection} from "./useMultiLevelSelection.tsx";
 
 type DeviceData = {
     device_id: string;
@@ -21,58 +22,22 @@ const deviceData: DeviceData[] = [
 ];
 
 export const ActualMultiLevelDropdown = () => {
-    const [selectedDevice, setSelectedDevice] = useState<string>('');
-    const [products, setProducts] = useState<string[]>([]);
-    const [selectedProduct, setSelectedProduct] = useState<string>('');
-
-    const handleDeviceChange = (e: SelectChangeEvent<string>) => {
-        const deviceName = e.target.value;
-        setSelectedDevice(deviceName);
-
-        const filteredProducts = deviceData
-            .filter(item => item.device_name === deviceName)
-            .map(item => item.product);
-
-        setProducts(filteredProducts);
-        setSelectedProduct('');
-    };
-
-    const handleProductChange = (e: SelectChangeEvent<string>) => {
-        const productName = e.target.value;
-        setSelectedProduct(productName);
-    };
-
-    const uniqueDevices = Array.from(new Set(deviceData.map(item => item.device_name)));
+    const {
+        selectedDevice,
+        products,
+        selectedProduct,
+        handleDeviceChange,
+        handleProductChange,
+        uniqueDevices
+    } = useMultiLevelSelection(deviceData);
 
     return (
         <Box display="flex" gap={2} flexWrap="wrap">
-            <FormControl variant="outlined" margin="normal" style={{minWidth: 200}}>
-                <InputLabel id="device-select-label">デバイス</InputLabel>
-                <Select
-                    labelId="device-select-label"
-                    value={selectedDevice}
-                    onChange={handleDeviceChange}
-                    label="Device"
-                >
-                    {uniqueDevices.map((device) => (
-                        <MenuItem key={device} value={device}>{device}</MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
+            <Dropdown label="デバイス" labelId="device-select-label" value={selectedDevice} options={uniqueDevices}
+                      onChange={handleDeviceChange}/>
 
-            <FormControl variant="outlined" margin="normal" style={{minWidth: 200}}>
-                <InputLabel id="product-select-label">製品</InputLabel>
-                <Select
-                    labelId="product-select-label"
-                    value={products.includes(selectedProduct) ? selectedProduct : ''}
-                    onChange={handleProductChange}
-                    label="Product"
-                >
-                    {products.map((product) => (
-                        <MenuItem key={product} value={product}>{product}</MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
+            <Dropdown label="製品" labelId="product-select-label" value={selectedProduct} options={products}
+                      onChange={handleProductChange}/>
         </Box>
     );
 };

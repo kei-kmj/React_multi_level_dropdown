@@ -1,6 +1,6 @@
 import {Box} from '@mui/material';
-import {FlatDataDropdown} from "./FlatDataDropdown.tsx";
-import {useFlatDataSelection} from "./useFlatDataSelection.tsx";
+import {FlatDataSelector} from "./FlatDataSelector.tsx";
+import {useFlatItemSelection} from "./useFlatItemSelection.tsx";
 
 export type ItemType = {
     item_id: string;
@@ -9,7 +9,7 @@ export type ItemType = {
     subItem: string;
 }
 
-const deviceData: ItemType[] = [
+const deviceItem: ItemType[] = [
     {item_id: "1", name: "USBメモリ", subItem_id: "1", subItem: "Buffalo_1"},
     {item_id: "1", name: "USBメモリ", subItem_id: "2", subItem: "Buffalo_2"},
     {item_id: "1", name: "USBメモリ", subItem_id: "3", subItem: "Buffalo_3"},
@@ -21,7 +21,7 @@ const deviceData: ItemType[] = [
     {item_id: "3", name: "SSD", subItem_id: "9", subItem: "ELECOM_3"}
 ];
 
-export const FlatData = () => {
+export const FlatItemDropdown = () => {
     const {
         selected:selectedDevice,
         filteredSubItems: products,
@@ -29,14 +29,14 @@ export const FlatData = () => {
         handleItemChange: handleDeviceChange,
         handleSubItemChange: handleProductChange,
         uniqueItems: uniqueDevices
-    } = useFlatDataSelection(deviceData);
+    } = useFlatItemSelection(deviceItem);
 
     return (
         <Box display="flex" gap={2} flexWrap="wrap">
-            <FlatDataDropdown label="デバイス" labelId="device-select-label" value={selectedDevice} options={uniqueDevices}
+            <FlatDataSelector label="デバイス" labelId="device-select-label" value={selectedDevice} options={uniqueDevices}
                               onChange={handleDeviceChange}/>
 
-            <FlatDataDropdown label="製品" labelId="product-select-label" value={selectedProduct} options={products}
+            <FlatDataSelector label="製品" labelId="product-select-label" value={selectedProduct} options={products}
                               onChange={handleProductChange}/>
         </Box>
     );

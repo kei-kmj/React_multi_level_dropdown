@@ -1,5 +1,5 @@
 import {NestedData} from "./NestedData.tsx";
-import {FlatData} from "./FlatData.tsx";
+import {FlatItemDropdown} from "./FlatItemDropdown.tsx";
 
 
 export const App = () => {
@@ -7,7 +7,7 @@ export const App = () => {
         <div>
             <h1>App</h1>
             <NestedData/>
-            <FlatData/>
+            <FlatItemDropdown/>
         </div>
     )
 }

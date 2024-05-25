@@ -1,9 +1,9 @@
 import {useState} from "react";
 import {SelectChangeEvent} from "@mui/material";
-import {ItemType} from "./FlatData.tsx";
+import {ItemType} from "./FlatItemDropdown.tsx";
 
 
-export const useFlatDataSelection = (items: ItemType[]) => {
+export const useFlatItemSelection = (items: ItemType[]) => {
     const [selected, setSelected] = useState<string>('');
     const [filteredSubItems, setFilteredSubItems] = useState<string[]>([]);
     const [selectedSubItem, setSelectedSubItem] = useState<string>('');

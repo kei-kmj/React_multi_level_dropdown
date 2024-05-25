@@ -9,7 +9,7 @@ type DropdownProps = {
     onChange: (e: SelectChangeEvent) => void
 }
 
-export const NestedDropdown: FC<DropdownProps> = ({labelID, label, value, options, onChange}) => {
+export const NestedDataSelector: FC<DropdownProps> = ({labelID, label, value, options, onChange}) => {
     return (
         <FormControl fullWidth margin="normal">
             <InputLabel id={labelID}>{label}</InputLabel>

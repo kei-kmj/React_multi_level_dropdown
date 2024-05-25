@@ -8,7 +8,7 @@ type DropdownProps = {
     options: string[];
     onChange: (event: SelectChangeEvent<string>) => void;
 }
-export const FlatDataDropdown = ({label, labelId, value, options, onChange}: DropdownProps) => {
+export const FlatDataSelector = ({label, labelId, value, options, onChange}: DropdownProps) => {
     return <FormControl variant="outlined" margin="normal" style={{minWidth: 200}}>
         <InputLabel id="product-select-label">製品</InputLabel>
         <Select

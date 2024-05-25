@@ -1,6 +1,6 @@
 import './App.css'
 import {Box} from "@mui/material";
-import {NestedDropdown} from "./NestedDropdown.tsx";
+import {NestedDataSelector} from "./NestedDataSelector.tsx";
 import {useNestedDataSelection} from "./useNestedDataSelection.tsx";
 
 
@@ -25,17 +25,17 @@ export const NestedData = () => {
 
     return (
         <Box display="flex" justifyContent="space-between" gap={5}>
-            <NestedDropdown labelID="first-select-label"
-                            label="食材" value={firstSelection} options={firstOptions} onChange={handleFirstSelection}
+            <NestedDataSelector labelID="first-select-label"
+                                label="食材" value={firstSelection} options={firstOptions} onChange={handleFirstSelection}
             />
-            <NestedDropdown labelID="second-select-label"
-                            label="材料" value={secondSelection} options={secondOptions}
-                            onChange={handleSecondSelection}
+            <NestedDataSelector labelID="second-select-label"
+                                label="材料" value={secondSelection} options={secondOptions}
+                                onChange={handleSecondSelection}
 
             />
-            <NestedDropdown labelID="third-select-label"
-                            label="詳細" value={thirdSelection}
-                            options={thirdOptions} onChange={handleThirdSelection}
+            <NestedDataSelector labelID="third-select-label"
+                                label="詳細" value={thirdSelection}
+                                options={thirdOptions} onChange={handleThirdSelection}
             />
         </Box>
     )

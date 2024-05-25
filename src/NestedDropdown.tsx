@@ -9,7 +9,7 @@ type DropdownProps = {
     onChange: (e: SelectChangeEvent) => void
 }
 
-export const OldDropdown: FC<DropdownProps> = ({labelID, label, value, options, onChange}) => {
+export const NestedDropdown: FC<DropdownProps> = ({labelID, label, value, options, onChange}) => {
     return (
         <FormControl fullWidth margin="normal">
             <InputLabel id={labelID}>{label}</InputLabel>
@@ -19,9 +19,6 @@ export const OldDropdown: FC<DropdownProps> = ({labelID, label, value, options, 
                 onChange={onChange}
                 style={{minWidth: 120}}
             >
-                <MenuItem value="">
-                    <em>選択してください</em>
-                </MenuItem>
                 {options.map((option) => (
                     <MenuItem key={option} value={option}>{option}</MenuItem>
                 ))}

@@ -1,10 +1,10 @@
 import './App.css'
 import {Box} from "@mui/material";
-import {OldDropdown} from "./OldDropdown.tsx";
-import {useOldMultiLevelDropdown} from "./useOldMultiLevelDropdown.tsx";
+import {NestedDropdown} from "./NestedDropdown.tsx";
+import {useNestedDataSelection} from "./useNestedDataSelection.tsx";
 
 
-export const NormalData = () => {
+export const NestedData = () => {
     const initialOptions = {
         first: ['肉', '野菜', '果物'],
         second: {肉: ['牛', '豚', '鶏'], 野菜: ['ジャガイモ', '人参', '玉ねぎ'], 果物: ['リンゴ', 'ミカン', 'バナナ']},
@@ -21,21 +21,21 @@ export const NormalData = () => {
         handleFirstSelection,
         handleSecondSelection,
         handleThirdSelection
-    } = useOldMultiLevelDropdown(initialOptions)
+    } = useNestedDataSelection(initialOptions)
 
     return (
         <Box display="flex" justifyContent="space-between" gap={5}>
-            <OldDropdown labelID="first-select-label"
-                         label="食材" value={firstSelection} options={firstOptions} onChange={handleFirstSelection}
+            <NestedDropdown labelID="first-select-label"
+                            label="食材" value={firstSelection} options={firstOptions} onChange={handleFirstSelection}
             />
-            <OldDropdown labelID="second-select-label"
-                         label="材料" value={secondSelection} options={secondOptions}
-                         onChange={handleSecondSelection}
+            <NestedDropdown labelID="second-select-label"
+                            label="材料" value={secondSelection} options={secondOptions}
+                            onChange={handleSecondSelection}
 
             />
-            <OldDropdown labelID="third-select-label"
-                         label="詳細" value={thirdSelection}
-                         options={thirdOptions} onChange={handleThirdSelection}
+            <NestedDropdown labelID="third-select-label"
+                            label="詳細" value={thirdSelection}
+                            options={thirdOptions} onChange={handleThirdSelection}
             />
         </Box>
     )

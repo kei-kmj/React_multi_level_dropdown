@@ -4,21 +4,21 @@ import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui
 type DropdownProps = {
     label: string;
     labelId: string;
-    value: string;
-    options: string[];
+    selectedValue: string;
+    nominationsList: string[];
     onChange: (event: SelectChangeEvent<string>) => void;
 }
-export const FlatDataSelector = ({label, labelId, value, options, onChange}: DropdownProps) => {
-    return <FormControl variant="outlined" margin="normal" style={{minWidth: 200}}>
-        <InputLabel id="product-select-label">製品</InputLabel>
+export const FlatDataSelector = ({label, labelId, selectedValue, nominationsList, onChange}: DropdownProps) => {
+    return <FormControl variant="outlined" margin="normal" sx={{minWidth: 200}}>
+        <InputLabel>{label}</InputLabel>
         <Select
             labelId={labelId}
-            value={value}
+            value={selectedValue}
             onChange={onChange}
             label={label}
         >
-            {options.map(option => (
-                <MenuItem key={option} value={option}>{option}</MenuItem>
+            {nominationsList.map(nominate => (
+                <MenuItem key={nominate} value={nominate}>{nominate}</MenuItem>
             ))}
         </Select>
     </FormControl>;
